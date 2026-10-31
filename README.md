@@ -55,22 +55,4 @@ Duas famílias gratuitas do Google Fonts, definidas em variáveis CSS:
 [Font Awesome](https://fontawesome.com) (kit gratuito).
 
 ### Imagens
-
-> ⚠️ **PREENCHER:** informe a origem e a licença das imagens da pasta `imagens/`.
-> Exemplo: "Fotos obtidas no [Unsplash](https://unsplash.com) / [Pexels](https://www.pexels.com), uso livre, com tamanho otimizado."
-
-## Estrutura do projeto
-
-```
-KiDelicia/
-├── index.html
-├── style.css
-├── imagens/          # fotos dos produtos e do banner (.jpg)
-└── scripts/
-    ├── dados.js      # catálogo de produtos (array de objetos)
-    └── app.js        # carrinho, filtros, busca, ordenação, tema e newsletter
-```
-
-## Como executar
-
-Não precisa de instalação. Basta abrir o `index.html` no navegador (ou usar a extensão Live Server do VS Code).
+[Unsplash](https://unsplash.com).
