@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KiDelícia — Lanchonete Artesanal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="topo">
+    <div class="faixa-topo">
+        <i class="fa-solid fa-motorcycle" aria-hidden="true"></i>
+        <span>Pediu, chegou quentinho! Frete grátis em pedidos acima de R$ 80,00.</span>
+    </div>
+
+    <nav aria-label="Navegação principal">
+        <a href="#topo" class="logo">
+            <i class="fa-solid fa-burger" aria-hidden="true"></i>
+            <span>KiDelícia</span>
+        </a>
+
+        <div class="conteiner-barra-pesquisa">
+            <label for="barra_pesquisa" class="barra-pesquisa">
+                <input type="search" name="pesquisa" id="barra_pesquisa" placeholder="Pesquise seu lanche aqui..."
+                    autocomplete="off" />
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </label>
+        </div>
+
+        <div class="menu-usuario">
+            <button type="button" class="botao-icone" id="botao_tema" aria-label="Alternar entre tema claro e escuro"
+                title="Alternar tema">
+                <i class="fa-solid fa-moon" id="icone_tema" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="botao-icone botao-carrinho-topo" id="botao_carrinho" data-after=""
+                aria-label="Abrir carrinho de compras" aria-expanded="false" title="Abrir carrinho">
+                <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="menu-categorias" id="menu_categorias" role="group" aria-label="Filtrar por categoria">
+            <button type="button" data-categoria="todas" class="ativo" aria-pressed="true">
+                <i class="fa-solid fa-utensils" aria-hidden="true"></i> Tudo
+            </button>
+            <button type="button" data-categoria="hamburguer" aria-pressed="false">
+                <i class="fa-solid fa-burger" aria-hidden="true"></i> Hambúrgueres
+            </button>
+            <button type="button" data-categoria="pizza" aria-pressed="false">
+                <i class="fa-solid fa-pizza-slice" aria-hidden="true"></i> Pizzas
+            </button>
+            <button type="button" data-categoria="acompanhamento" aria-pressed="false">
+                <i class="fa-solid fa-bowl-food" aria-hidden="true"></i> Acompanhamentos
+            </button>
+            <button type="button" data-categoria="sobremesa" aria-pressed="false">
+                <i class="fa-solid fa-ice-cream" aria-hidden="true"></i> Sobremesas
+            </button>
+        </div>
+    </nav>
+
+    <header class="banner-destaque">
+        <div class="banner-conteudo">
+            <h1>Fome grande pede lanche maior</h1>
+            <p>Smash burgers na chapa, pizzas de fermentação lenta, porções crocantes e sobremesas deliciosas para
+                fechar o seu pedido.</p>
+            <a href="#cardapio" class="btn-ofertas">
+                <i class="fa-solid fa-fire" aria-hidden="true"></i> Ver Cardápio
+            </a>
+        </div>
+        <img src="imagens/Smash Duplo Cheddar.jpg" alt="Hambúrguer Smash Duplo Cheddar com queijo derretido">
+    </header>
+
+    <main id="cardapio">
+        <section class="secao-cardapio" aria-labelledby="titulo_cardapio">
+            <div class="cabecalho-cardapio">
+                <h2>Nosso Cardápio</h2>
+                <div class="controles-cardapio">
+                    <span id="contador_produtos" aria-live="polite"></span>
+                    <label for="select_ordem" class="caixa-ordenacao">
+                        <i class="fa-solid fa-arrow-up-wide-short" aria-hidden="true"></i>
+                        <select id="select_ordem" aria-label="Ordenar produtos por">
+                            <option value="relevancia">Mais pedidos</option>
+                            <option value="menor-preco">Menor preço</option>
+                            <option value="maior-preco">Maior preço</option>
+                            <option value="avaliacao">Melhor avaliação</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+            <div id="lista_produtos" class="conteiner-produtos"></div>
+        </section>
+
+        <section class="newsletter" aria-labelledby="titulo_newsletter">
+            <h2 id="titulo_newsletter">Receba nossas promoções</h2>
+            <p>Assine a newsletter e fique por dentro dos combos e das ofertas da semana.</p>
+            <form id="form_newsletter" class="form-newsletter" novalidate>
+                <input type="email" id="email_newsletter" placeholder="seu@email.com" aria-label="Seu e-mail"
+                    autocomplete="email" />
+                <button type="submit">Quero receber</button>
+            </form>
+            <p id="erro_newsletter" class="erro-newsletter" role="alert"></p>
+        </section>
+    </main>
+
+    <div id="fundo_modal" class="fundo-modal" hidden></div>
+
+    <aside id="carrinho_lateral" class="carrinho-lateral" aria-label="Seu carrinho de compras" aria-hidden="true">
+        <header class="carrinho-topo">
+            <h3><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Seu Pedido</h3>
+            <button type="button" class="botao-fechar" id="botao_fechar_carrinho" aria-label="Fechar carrinho">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+        </header>
+
+        <div class="progresso-frete-container">
+            <p id="texto_progresso_frete" class="texto-progresso-frete"></p>
+            <div class="barra-progresso-fundo">
+                <div id="barra_progresso_preenchimento" class="barra-progresso-preenchimento"></div>
+            </div>
+        </div>
+
+        <ul id="itens_carrinho" class="lista-produtos-carrinho"></ul>
+
+        <div class="rodape-carrinho">
+            <div class="linha-resumo">
+                <span>Subtotal</span>
+                <span id="valor_subtotal">R$ 0,00</span>
+            </div>
+            <div class="linha-resumo">
+                <span>Entrega</span>
+                <span id="valor_frete">R$ 0,00</span>
+            </div>
+            <div class="linha-resumo total">
+                <span>Total</span>
+                <span id="valor_total">R$ 0,00</span>
+            </div>
+            <button type="button" id="botao_finalizar" class="finalizar-compra">
+                <i class="fa-solid fa-check" aria-hidden="true"></i> Finalizar Pedido
+            </button>
+        </div>
+    </aside>
+
+    <div id="aviso_flutuante" class="aviso-flutuante" role="status" aria-live="polite"></div>
+
+    <footer class="rodape">
+        <p>© 2026 KiDelícia — Lanchonete Artesanal</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/bf19b5ff3e.js" crossorigin="anonymous"></script>
+    <script src="scripts/dados.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>
